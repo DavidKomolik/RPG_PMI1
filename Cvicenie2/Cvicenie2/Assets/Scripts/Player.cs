@@ -17,7 +17,8 @@ public class Player : MonoBehaviour
     void Update()
     {
         Movement();
-
+        
+        // Vystrelenie projektilu
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
@@ -31,6 +32,7 @@ public class Player : MonoBehaviour
             }
         }
 
+        // Melee utok na blizko
         if (Input.GetMouseButtonDown(1))
         {
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
@@ -75,7 +77,7 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.E))
         {
             Vector3 moveDirection = new Vector3(0, 1, 0);
-            transform.Rotate(moveDirection);
+            transform.Rotate(moveDirection); // rotovanie
         }
         if (Input.GetKey(KeyCode.Q))
         {

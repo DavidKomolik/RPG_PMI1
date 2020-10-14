@@ -2,7 +2,8 @@
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] float speed;
+    [SerializeField] float movementSpeed;
+    [SerializeField] float rotationSpeed;
     [SerializeField] float damage;
     [SerializeField] GameObject projectilePrefab;
     [SerializeField] MeleeRange meleeRange;
@@ -57,32 +58,36 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             Vector3 moveDirection = new Vector3(0, 0, 1); // smer pohybu
-            transform.Translate(moveDirection * speed); // zmena transformácie (pozície) objektu hráča vzhľadom na smer pohybu
+            transform.Translate(moveDirection * movementSpeed); // zmena transformácie (pozície) objektu hráča vzhľadom na smer pohybu
         }
         if (Input.GetKey(KeyCode.S))
         {
             Vector3 moveDirection = new Vector3(0, 0, -1);
-            transform.Translate(moveDirection * speed);
+            transform.Translate(moveDirection * movementSpeed);
         }
         if (Input.GetKey(KeyCode.A))
         {
             Vector3 moveDirection = new Vector3(-1, 0, 0);
-            transform.Translate(moveDirection * speed);
+            transform.Translate(moveDirection * movementSpeed);
         }
         if (Input.GetKey(KeyCode.D))
         {
             Vector3 moveDirection = new Vector3(1, 0, 0);
-            transform.Translate(moveDirection * speed);
+            transform.Translate(moveDirection * movementSpeed);
         }
         if (Input.GetKey(KeyCode.E))
         {
             Vector3 moveDirection = new Vector3(0, 1, 0);
+<<<<<<< Updated upstream
             transform.Rotate(moveDirection); // rotovanie
+=======
+            transform.Rotate(moveDirection * rotationSpeed);
+>>>>>>> Stashed changes
         }
         if (Input.GetKey(KeyCode.Q))
         {
             Vector3 moveDirection = new Vector3(0, -1, 0);
-            transform.Rotate(moveDirection);
+            transform.Rotate(moveDirection * rotationSpeed);
         }
     }
 

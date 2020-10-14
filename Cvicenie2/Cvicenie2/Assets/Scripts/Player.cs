@@ -78,11 +78,7 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.E))
         {
             Vector3 moveDirection = new Vector3(0, 1, 0);
-<<<<<<< Updated upstream
-            transform.Rotate(moveDirection); // rotovanie
-=======
             transform.Rotate(moveDirection * rotationSpeed);
->>>>>>> Stashed changes
         }
         if (Input.GetKey(KeyCode.Q))
         {

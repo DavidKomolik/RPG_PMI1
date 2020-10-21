@@ -75,16 +75,6 @@ public class Player : MonoBehaviour
             Vector3 moveDirection = new Vector3(1, 0, 0);
             transform.Translate(moveDirection * movementSpeed);
         }
-        if (Input.GetKey(KeyCode.E))
-        {
-            Vector3 moveDirection = new Vector3(0, 1, 0);
-            transform.Rotate(moveDirection * rotationSpeed);
-        }
-        if (Input.GetKey(KeyCode.Q))
-        {
-            Vector3 moveDirection = new Vector3(0, -1, 0);
-            transform.Rotate(moveDirection * rotationSpeed);
-        }
     }
 
     private void ShootProjectile(Vector3 position)

@@ -1,26 +1,44 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] float movementSpeed;
     [SerializeField] float rotationSpeed;
     [SerializeField] float damage;
+    [SerializeField] float rangeAttackDelay;
+    [SerializeField] float meleeAttackDelay;
     [SerializeField] GameObject projectilePrefab;
     [SerializeField] MeleeRange meleeRange;
+    [SerializeField] GameObject destinationIndicator;
 
     private Camera _camera;
+    private NavMeshAgent _agent;
+
+    private float rangeAttackTimer;
+    private float meleeAttackTimer;
 
     private void Awake()
     {
         _camera = Camera.main;
+        _agent = GetComponent<NavMeshAgent>();
+
+        destinationIndicator = Instantiate(destinationIndicator);
+        destinationIndicator.SetActive(false);
     }
 
     void Update()
     {
-        Movement();
-        
-        // Vystrelenie projektilu
-        if (Input.GetMouseButtonDown(0))
+        rangeAttackTimer -= Time.deltaTime;
+        meleeAttackTimer -= Time.deltaTime;
+
+        if (_agent.remainingDistance == 0)
+        {
+            destinationIndicator.SetActive(false);
+        }
+
+        // Vystrelenie projektilu + pohyb
+        if (Input.GetMouseButton(0))
         {
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
 
@@ -30,11 +48,14 @@ public class Player : MonoBehaviour
                 {
                     ShootProjectile(hitInfo.point);
                 }
+                {
+                    MoveToPosition(hitInfo.point);
+                }
             }
         }
 
         // Melee utok na blizko
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButton(1))
         {
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
 
@@ -53,32 +74,23 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void Movement()
+    private void MoveToPosition(Vector3 position)
     {
-        if (Input.GetKey(KeyCode.W))
-        {
-            Vector3 moveDirection = new Vector3(0, 0, 1); // smer pohybu
-            transform.Translate(moveDirection * movementSpeed); // zmena transformácie (pozície) objektu hráča vzhľadom na smer pohybu
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            Vector3 moveDirection = new Vector3(0, 0, -1);
-            transform.Translate(moveDirection * movementSpeed);
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            Vector3 moveDirection = new Vector3(-1, 0, 0);
-            transform.Translate(moveDirection * movementSpeed);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            Vector3 moveDirection = new Vector3(1, 0, 0);
-            transform.Translate(moveDirection * movementSpeed);
-        }
+        if (destinationIndicator.activeSelf == false)
+            destinationIndicator.SetActive(true);
+
+        _agent.SetDestination(position);
+
+        destinationIndicator.transform.position = _agent.destination;
     }
 
     private void ShootProjectile(Vector3 position)
     {
+        if (rangeAttackTimer > 0)
+            return;
+
+        rangeAttackTimer = rangeAttackDelay;
+
         Debug.Log("Shooting projectile at enemy position");
 
         var projectileObject = Instantiate(projectilePrefab);
@@ -93,6 +105,11 @@ public class Player : MonoBehaviour
 
     private void AttackEnemy(Enemy enemy)
     {
+        if (meleeAttackTimer > 0)
+            return;
+
+        meleeAttackTimer = meleeAttackDelay;
+
         Debug.Log("Attacking enemy with melee attack");
         enemy.TakeDamage(damage);
     }

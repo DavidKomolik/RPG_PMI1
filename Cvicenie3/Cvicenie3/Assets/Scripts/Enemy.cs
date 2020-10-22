@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
@@ -8,10 +9,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] AggroRange aggroRange;
 
     private Vector3 _startingPosition;
+    private NavMeshAgent _agent;
 
     private void Awake()
     {
         _startingPosition = transform.position;
+        _agent = GetComponent<NavMeshAgent>();
     }
 
     public void TakeDamage(float damage)
@@ -43,11 +46,9 @@ public class Enemy : MonoBehaviour
 
     private void MoveToPosition(Vector3 position)
     {
-        if (position == transform.position)
+        if (position == transform.position ||  position == _agent.destination)
             return;
 
-        Vector3 direction = position - transform.position;
-
-        transform.Translate(direction.normalized * Time.deltaTime * speed);
+        _agent.SetDestination(position);
     }
 }

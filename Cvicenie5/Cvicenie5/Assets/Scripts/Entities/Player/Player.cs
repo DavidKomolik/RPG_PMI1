@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject projectilePrefab;
     [SerializeField] MeleeRange meleeRange;
     [SerializeField] GameObject destinationIndicator;
+    [SerializeField] Animator playerAnimator;
 
     private Camera _camera;
     private NavMeshAgent _agent;
@@ -32,6 +33,8 @@ public class Player : MonoBehaviour
     {
         rangeAttackTimer -= Time.deltaTime;
         meleeAttackTimer -= Time.deltaTime;
+
+        playerAnimator.SetFloat("RunningSpeed", _agent.velocity.magnitude / _agent.speed);
 
         if (_agent.remainingDistance == 0)
         {

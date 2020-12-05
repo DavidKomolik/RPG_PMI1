@@ -9,11 +9,13 @@ public class Enemy : MonoBehaviour
     [SerializeField] float damage;
     [SerializeField] float speed;
     [SerializeField] AggroRange aggroRange;
+    [SerializeField] Animator enemyAnimator;
 
     private Vector3 _startingPosition;
     private NavMeshAgent _agent;
 
     private float _maxHealth;
+    private bool _isDead;
 
     private void Awake()
     {
@@ -26,19 +28,19 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
+        healthBar.fillAmount = health / _maxHealth;
 
-        if (health > 0)
+        if (health <= 0)
         {
-            healthBar.fillAmount = health / _maxHealth;
-        }
-        else
-        {
-            Destroy(gameObject);
+            OnDeath();
         }
     }
 
     private void Update()
     {
+        if (_isDead)
+            return;
+
         if (aggroRange.PlayerObject != null)
         {
             MoveToPosition(aggroRange.PlayerObject.transform.position);
@@ -55,5 +57,20 @@ public class Enemy : MonoBehaviour
             return;
 
         _agent.SetDestination(position);
+    }
+
+    private void OnDeath()
+    {
+        _isDead = true;
+
+        //disable movement
+        _agent.enabled = false;
+
+        //disable player interaction IGNORE RAYCAST = 2
+        gameObject.layer = 2;
+
+        enemyAnimator.Play("Death");
+
+        Destroy(gameObject, 1f);
     }
 }

@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 4347206276112340823}
   - component: {fileID: 4347206276112340820}
   - component: {fileID: 4347206276112340826}
-  - component: {fileID: 137086169}
+  - component: {fileID: 2035813999}
+  - component: {fileID: 3890018035266454224}
   m_Layer: 0
   m_Name: Chest
   m_TagString: Untagged
@@ -112,7 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinPrefab: {fileID: 6428123111618170298, guid: 83b7ba7e7a38d354582313424610dbba, type: 3}
   interactionRange: {fileID: 8226782849158810058}
---- !u!208 &137086169
+--- !u!208 &2035813999
 NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,6 +129,31 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &3890018035266454224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4347206276112340827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64d233ee446a7a4792dbec24c90792a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryItems:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &4653459857591491979
 GameObject:
   m_ObjectHideFlags: 0

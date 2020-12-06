@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 801f6098cc6ff694d841fef45f65b19d, type: 3}
+  m_Name: Bones Data
+  m_EditorClassIdentifier: 
+  name: Bones
+  description: Bunch of bones
+  price: 1
+  sprite: {fileID: 21300000, guid: 41407543d3fbd874bbe1f81ed841bc10, type: 3}

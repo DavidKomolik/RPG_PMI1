@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2124912554}
   - component: {fileID: 2124912556}
   - component: {fileID: 2124912555}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Aggro Range
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -329,6 +329,7 @@ MonoBehaviour:
   damage: 15
   speed: 3
   aggroRange: {fileID: 2124912555}
+  enemyAnimator: {fileID: 2393611735617885073}
 --- !u!195 &1054437412096515438
 NavMeshAgent:
   m_ObjectHideFlags: 0

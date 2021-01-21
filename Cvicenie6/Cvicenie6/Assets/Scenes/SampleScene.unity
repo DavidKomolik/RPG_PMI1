@@ -5478,11 +5478,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
---- !u!95 &1485930072 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 2393611735617885073, guid: 58685f56e3ca77d4ebf24d247eb5fcf7, type: 3}
-  m_PrefabInstance: {fileID: 2163248940129122374}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1495324194
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8306,10 +8301,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2124912553, guid: 58685f56e3ca77d4ebf24d247eb5fcf7, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2163248941025497795, guid: 58685f56e3ca77d4ebf24d247eb5fcf7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.379998
@@ -8354,18 +8345,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2163248941025497797, guid: 58685f56e3ca77d4ebf24d247eb5fcf7, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4e23d6f253b0eeb4eba221d730ebb60f, type: 2}
     - target: {fileID: 2163248941025497799, guid: 58685f56e3ca77d4ebf24d247eb5fcf7, type: 3}
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 3234991755425175702, guid: 58685f56e3ca77d4ebf24d247eb5fcf7, type: 3}
-      propertyPath: enemyAnimator
-      value: 
-      objectReference: {fileID: 1485930072}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58685f56e3ca77d4ebf24d247eb5fcf7, type: 3}
 --- !u!1001 &2885764333443361100
